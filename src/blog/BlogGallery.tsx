@@ -37,15 +37,17 @@ const BlogGallery = (props: IBlogGalleryProps) => {
     <>
       <ul>
         {list?.map((elt) => (
-          <li key={elt.slug} className="mb-3 flex justify-between">
-            <Link href="/posts/[slug]" as={`/posts/${elt.slug}`}>
-              <a>
-                <h2>{elt.title}</h2>
-              </a>
-            </Link>
+          <li key={elt.slug} className="mb-3 pb-3 flex justify-between border-b border-[#E4E4E4]">
+            <div>
+              <h2 className="font-bold">{elt.title}</h2>
+              <p className="w-3/4">{elt.description}</p>
+            </div>
 
-            <div className="text-right">
+            <div className="flex flex-col justify-between text-right whitespace-pre">
               {format(new Date(elt.date), "LLL d, yyyy")}
+              <Link href="/posts/[slug]" as={`/posts/${elt.slug}`}>
+                <a className="text-[#121316] cursor-pointer">Read More</a>
+              </Link>
             </div>
           </li>
         ))}
